@@ -1,1 +1,2 @@
 #!/bin/bash
+sudo find hello -user guillaume -print0 | xargs -0 chown betty
