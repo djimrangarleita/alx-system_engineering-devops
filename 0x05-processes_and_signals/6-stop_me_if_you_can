@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+#I kill a process of a script called 4-to_infinity_and_beyond runing with bash
+
+pkill -f "bash ./4-to_infinity_and_beyond"
