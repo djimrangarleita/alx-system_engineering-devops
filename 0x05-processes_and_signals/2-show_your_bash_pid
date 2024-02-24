@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #I print the list the all processes
 
-ps auxH | grep bash
+ps auxf | grep bash
