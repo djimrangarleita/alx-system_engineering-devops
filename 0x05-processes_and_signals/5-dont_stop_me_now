@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+#I kill a process of a script called 4-to_infinity_and_beyond runing with bash
+
+id_process=$(pgrep -f "bash ./4-to_infinity_and_beyond")
+kill "$id_process"
