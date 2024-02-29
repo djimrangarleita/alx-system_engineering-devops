@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Listen to connection on localhost:98
+
+nc -l -s localhost -p 98

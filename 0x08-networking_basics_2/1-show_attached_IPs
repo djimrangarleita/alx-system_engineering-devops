@@ -4,7 +4,7 @@
 interfaces=$(ifconfig -a | grep '^[a-zA-Z]' | awk -F':' '{print $1}')
 
 for nint in $interfaces; do
-	ip4=$(ifconfig $nint | grep 'inet ' | awk '{print $2}')
+	ip4=$(ifconfig "$nint" | grep 'inet ' | awk '{print $2}')
 	if [ -n "$ip4" ]; then
 		echo "$ip4"
 	fi
