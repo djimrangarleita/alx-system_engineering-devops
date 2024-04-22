@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+# This script will connect to a remote sever with specified datails
 ssh -i ~/.ssh/school ubuntu@54.160.125.191
