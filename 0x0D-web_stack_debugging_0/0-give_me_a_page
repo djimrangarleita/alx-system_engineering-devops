@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Create file at default path for apache server and start the server
+sudo mkdir -p /var/www/html
+sudo echo "Hello Holberton" > /var/www/html/index.html
+sudo service apache2 start
