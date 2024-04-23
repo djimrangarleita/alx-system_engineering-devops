@@ -1,10 +1,13 @@
 # Create config params for ssh connection
 
-file { 'Create file':
-  path    => '/etc/ssh/ssh_config',
-  content => "Host 54.160.125.191
-	  HostName 54.160.125.191
-	  User ubuntu
-	  IdentityFile '~/.ssh/school'
-	  PasswordAuthentication no\n"
+file_line { 'Disable password auth':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'PasswordAuthentication no',
+  match => '^#?PasswordAuthentication',
+}
+
+file_line { 'Define identity file':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'IdentityFile ~/.ssh/school',
+  match => '^#?IdentityFile',
 }
