@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-# Change me
+# Install nginx web server and edit index.html file
+apt-get -y install nginx
+mkdir -p /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
+service nginx start
