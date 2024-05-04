@@ -8,4 +8,4 @@ apt-get -y install nginx
 mkdir -p /var/www/html
 echo 'Hello World!' > /var/www/html/index.html
 sed -i "/server_name _;/a\ \trewrite ^/redirect_me$ $NEW_URL permanent;" $FILE
-service nginx start
+service nginx restart
