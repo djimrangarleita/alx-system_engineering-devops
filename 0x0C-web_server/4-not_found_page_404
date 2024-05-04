@@ -10,6 +10,6 @@ mkdir -p /var/www/html
 echo 'Hello World!' > /var/www/html/index.html
 mkdir -p /usr/share/nginx/html
 sed -i "/server_name _;/a\ \trewrite ^/redirect_me $NEW_URL permanent;" $FILE
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/c_404.html
+echo -e "Ceci n'est pas une page\n" > /usr/share/nginx/html/c_404.html
 sed -i "/rewrite .* permanent;/a\ $REDIR_404" $FILE
 service nginx restart
