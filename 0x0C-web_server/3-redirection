@@ -1,2 +1,11 @@
 #!/usr/bin/env bash
-# Change me
+# Install nginx web server, edit index.html file and configure redirection
+FILE="/etc/nginx/sites-available/default"
+NEW_URL="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+
+apt-get -y update
+apt-get -y install nginx
+mkdir -p /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
+sed -i "/server_name _;/a\ \trewrite ^/redirect_me$ $NEW_URL permanent;" $FILE
+service nginx start
