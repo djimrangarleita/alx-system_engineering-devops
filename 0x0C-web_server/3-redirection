@@ -9,5 +9,5 @@ mkdir -p /var/www/html
 chown -R "$USER":"$USER" /var/www
 chmod -R 755 /var/www
 echo 'Hello World!' > /var/www/html/index.html
-sed -i "/server_name _;/a\ \trewrite ^/redirect_me $NEW_URL permanent;" $FILE
+sed -i "/server_name _;/a\ \trewrite /redirect_me $NEW_URL permanent;" $FILE
 service nginx restart
