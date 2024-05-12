@@ -4,13 +4,15 @@ FILE="/etc/haproxy/haproxy.cfg"
 CONFIG_STR=$(cat <<EOF
 
 frontend http-in
-    bind *:80
-    default_backend web_servers
+	bind *:80
+	default_backend web_servers
 
 backend web_servers
-    balance roundrobin
-    server 530455-web-01 54.160.125.191:80 check
-    server 530455-web-02 54.144.46.227:80 check
+	balance roundrobin
+	server 530455-web-01 54.160.125.191:80 check
+	server 530455-web-02 54.144.46.227:80 check
+
+	http-request set-header X-Served-By %[req.hdr(X-Served-By)]
 EOF
 )
 
