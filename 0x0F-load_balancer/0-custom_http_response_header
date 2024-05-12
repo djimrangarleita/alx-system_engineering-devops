@@ -29,4 +29,5 @@ echo 'Hello World!' > /var/www/html/index.html
 mkdir -p /usr/share/nginx/html
 echo -e "Ceci n'est pas une page\n" > /usr/share/nginx/html/c_404.html
 echo "$REDIR_404" > "$FILE"
-service nginx restart
+service nginx stop
+service nginx start
