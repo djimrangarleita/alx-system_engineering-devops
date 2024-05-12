@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Install nginx web server, edit index.html file and configure redirection
 FILE="/etc/nginx/sites-available/default"
+HOST_NAME=$(hostname)
 REDIR_404=$(cat <<EOF
 server {
 	listen 80 default_server;
@@ -11,7 +12,7 @@ server {
 	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	error_page 404 /c_404.html;
 	location / {
-		add_header X-Served-By 530455-web-02;
+		add_header X-Served-By $HOST_NAME;
 	}
 	location = /c_404.html {
 		root /usr/share/nginx/html;
