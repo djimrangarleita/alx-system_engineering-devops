@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Install nginx web server, edit index.html file and configure redirection
+FILE="/etc/haproxy/haproxy.cfg"
+CONFIG_STR=$(cat <<EOF
+
+frontend http-in
+    bind *:80
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server 530455-web-01 54.160.125.191:80 check
+    server 530455-web-02 54.144.46.227:80 check
+EOF
+)
+
+apt-get -y update
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.8
+apt-get -y install haproxy=2.8.\*
+mkdir -p /etc/haproxy
+echo "$CONFIG_STR" >> "$FILE"
+service haproxy restart
