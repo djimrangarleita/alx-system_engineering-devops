@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Script that runs nginx server as nginx user
+chmod 644 /etc/nginx/nginx.conf
 sed -i "/user/c\user nginx nginx;" /etc/nginx/nginx.conf
 sed -i "/http {/a\ \tserver {\n\t\tlisten 8080;\n\t}" /etc/nginx/nginx.conf
 sudo -u nginx service nginx restart
