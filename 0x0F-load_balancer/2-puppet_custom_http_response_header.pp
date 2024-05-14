@@ -14,7 +14,7 @@ file { '/var/www/html/index.html':
   content => "Hello World!\n"
 }
 
-$hostname_output = inline_template('<%= @host_name %>')
+$hostname_output = $facts['networking']['hostname']
 
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
