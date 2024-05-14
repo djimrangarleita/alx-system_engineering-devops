@@ -14,7 +14,7 @@ file { '/var/www/html/index.html':
   content => "Hello World!\n"
 }
 
-$hostname_output = $facts['networking']['hostname']
+$hostname_output = $facts['hostname']
 
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
@@ -25,9 +25,13 @@ file { '/etc/nginx/sites-available/default':
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
 	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+	error_page 404 /c_404.html;
 	location / {
 		add_header X-Served-By ${hostname_output};
-		try_files \$uri \$uri/ =404;
+	}
+	location = /c_404.html {
+		root /usr/share/nginx/html;
+		internal;
 	}
 }
 "
