@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-# Change me
+# Script that runs nginx server as nginx user
+sed -i "/user/c\user nginx nginx;" /etc/nginx/nginx.conf
+sed -i "/http {/a\ \n\tserver {\n\t\tlisten 8080;\n\t}" /etc/nginx/nginx.conf

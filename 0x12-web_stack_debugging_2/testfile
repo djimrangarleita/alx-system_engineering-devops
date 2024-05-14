@@ -1,0 +1,5 @@
+user nginx nginx;
+And there are also
+Lines after the matching
+I just got inserted
+Line that won't be impacted
