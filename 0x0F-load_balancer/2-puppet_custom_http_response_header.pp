@@ -1,7 +1,7 @@
 # Install new nginx, configure and create 301 redirection
 exec { 'Update system':
   path        => '/usr/bin',
-  command     => 'apt-get update',
+  command     => 'apt-get -y update',
   refreshonly => true,
 }
 
@@ -19,8 +19,6 @@ file { '/usr/share/nginx/html/c_404.html':
   content => "Ceci n'est pas une page\n\n"
 }
 
-$hostname_output = $facts['hostname']
-
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
   content => "server {
@@ -32,7 +30,7 @@ file { '/etc/nginx/sites-available/default':
 	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	error_page 404 /c_404.html;
 	location / {
-		add_header X-Served-By ${hostname_output};
+		add_header X-Served-By ${hostname};
 	}
 	location = /c_404.html {
 		root /usr/share/nginx/html;
