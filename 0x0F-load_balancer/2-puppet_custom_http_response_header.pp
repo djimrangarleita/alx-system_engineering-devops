@@ -1,7 +1,6 @@
 # Install new nginx, configure and create 301 redirection
 exec { 'Update system':
-  path        => '/usr/bin',
-  command     => 'apt-get update',
+  command     => '/usr/bin/apt-get update',
 }
 
 -> package { 'nginx':
