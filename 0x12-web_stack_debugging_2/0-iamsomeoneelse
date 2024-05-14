@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Connect as another user
+su $1
+whoami
