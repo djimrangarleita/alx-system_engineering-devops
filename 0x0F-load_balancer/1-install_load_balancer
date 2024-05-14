@@ -6,8 +6,8 @@ CONFIG_STR=$(cat <<EOF
 listen web_servers
 	bind *:80
 	balance roundrobin
-	server 530455-web-01 54.160.125.191:80 check
-	server 530455-web-02 54.144.46.227:80 check
+	server s1 54.160.125.191:80 check
+	server s2 54.144.46.227:80 check
 
 	http-request set-header X-Served-By %[req.hdr(X-Served-By)]
 EOF
@@ -15,7 +15,7 @@ EOF
 
 apt-get -y update
 apt-get -y install --no-install-recommends software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.8
-apt-get -y install haproxy=2.8.\*
+add-apt-repository -y ppa:vbernat/haproxy
+apt-get -y install haproxy
 echo "$CONFIG_STR" >> "$FILE"
 service haproxy restart
