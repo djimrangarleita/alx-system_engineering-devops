@@ -1,25 +1,25 @@
 # Install new nginx, configure and create 301 redirection
 exec { 'Update system':
   path        => '/usr/bin',
-  command     => 'apt-get -y update',
+  command     => 'apt-get update',
   refreshonly => true,
 }
 
-package { 'nginx':
+-> package { 'nginx':
   ensure => installed
 }
 
-file { '/var/www/html/index.html':
+-> file { '/var/www/html/index.html':
   ensure  => present,
   content => "Hello World!\n"
 }
 
-file { '/usr/share/nginx/html/c_404.html':
+-> file { '/usr/share/nginx/html/c_404.html':
   ensure  => present,
   content => "Ceci n'est pas une page\n\n"
 }
 
-file { '/etc/nginx/sites-available/default':
+-> file { '/etc/nginx/sites-available/default':
   ensure  => present,
   content => "server {
 	listen 80 default_server;
@@ -38,6 +38,6 @@ file { '/etc/nginx/sites-available/default':
 "
 }
 
-exec { 'Restart server':
+-> exec { 'Restart server':
   command => '/usr/sbin/service nginx restart'
 }
