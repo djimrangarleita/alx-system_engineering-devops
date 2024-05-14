@@ -14,6 +14,11 @@ file { '/var/www/html/index.html':
   content => "Hello World!\n"
 }
 
+file { '/usr/share/nginx/html/c_404.html':
+  ensure  => present,
+  content => "Ceci n'est pas une page\n\n"
+}
+
 $hostname_output = $facts['hostname']
 
 file { '/etc/nginx/sites-available/default':
