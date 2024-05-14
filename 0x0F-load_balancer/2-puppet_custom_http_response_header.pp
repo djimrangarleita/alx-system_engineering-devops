@@ -29,9 +29,7 @@ file { '/etc/nginx/sites-available/default':
 	server_name _;
 	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	error_page 404 /c_404.html;
-	location / {
-		add_header X-Served-By ${hostname};
-	}
+	add_header X-Served-By ${hostname};
 	location = /c_404.html {
 		root /usr/share/nginx/html;
 		internal;
