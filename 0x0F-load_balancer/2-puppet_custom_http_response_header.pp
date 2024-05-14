@@ -38,6 +38,10 @@ exec { 'Update system':
 "
 }
 
--> exec { 'Restart server':
-  command => '/usr/sbin/service nginx restart'
+-> exec { 'Stop server':
+  command => '/usr/sbin/service nginx stop'
+}
+
+-> exec { 'Start server':
+  command => '/usr/sbin/service nginx start'
 }
