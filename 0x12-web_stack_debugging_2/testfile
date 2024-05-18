@@ -1,5 +1,6 @@
-user nginx nginx;
+user trial;
 And there are also
 Lines after the matching
 I just got inserted
 Line that won't be impacted
+user www:data;

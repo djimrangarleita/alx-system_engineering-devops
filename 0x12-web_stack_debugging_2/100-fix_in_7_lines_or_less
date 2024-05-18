@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Script that runs nginx server as nginx user
 chmod 644 /etc/nginx/nginx.conf
-sed -i "/user/c\user nginx;" /etc/nginx/nginx.conf
+sed -i '1{s/\b\(root\|www:data\)\b/nginx/}' /etc/nginx/nginx.conf
 sed -i "s/80 /8080 /g" /etc/nginx/sites-available/default
 pkill apache2
 su nginx -s /bin/bash -c 'service nginx restart'
