@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Add a comment
+
+read_records()
+{
+	result=$(dig "$1" | awk '/ANSWER SECTION:/ {flag=1; next}
+	/^;;/ {flag=0} flag && NF && !/^;/ {print $1, $4, $5}')
+	read -r domain rec ip_add <<< "$result"
+	echo "The subdomain ${domain%%.*} is a $rec record and points to $ip_add"
+}
+
+subdomains=("www" "lb-01" "web-01" "web-02")
+if [ -z "$2" ]
+then
+	for elt in "${subdomains[@]}"; do
+		read_records "$elt.$1"
+	done
+else
+	read_records "$2.$1"
+fi
