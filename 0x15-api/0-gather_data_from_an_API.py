@@ -20,7 +20,7 @@ def read_json():
         total += 1
         if task.get('completed'):
             completed_tasks += 1
-            todos_list += ('\t' + task.get('title') + '\n')
+            todos_list += ('\t ' + task.get('title') + '\n')
     print(f"Employee {name} is done with tasks({completed_tasks}/{total}):")
     print(todos_list, end='')
 
