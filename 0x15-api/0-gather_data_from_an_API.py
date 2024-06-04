@@ -5,9 +5,6 @@
 import requests
 from sys import argv
 
-url_todos = f'https://jsonplaceholder.typicode.com/todos?userId={argv[1]}'
-url_users = f'https://jsonplaceholder.typicode.com/users/{argv[1]}'
-
 
 def read_json():
     """Read and print json data from API"""
@@ -36,4 +33,6 @@ def get_user():
 
 
 if __name__ == "__main__":
+    url_todos = f'https://jsonplaceholder.typicode.com/todos?userId={argv[1]}'
+    url_users = f'https://jsonplaceholder.typicode.com/users/{argv[1]}'
     read_json()
