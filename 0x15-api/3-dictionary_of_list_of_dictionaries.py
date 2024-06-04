@@ -28,7 +28,7 @@ def read_json():
 
 def get_username(userId):
     """Print user task"""
-    r = requests.get('https://jsonplaceholder.typicode.com/users/{userId}')
+    r = requests.get(f'https://jsonplaceholder.typicode.com/users/{userId}')
     user = r.json()
     return user.get('username') if user else None
 
