@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Query reddit api and print hot post titles of a subreddit"""
+"""
+    Query reddit api and print hot post titles of a subreddit
+"""
 
 
 import requests
@@ -7,10 +9,9 @@ import requests
 
 def top_ten(subreddit):
     """Print title of 10 hot posts"""
-    endpoint = f'https://www.reddit.com/r/{subreddit}/hot.json'
-    headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0\
-) Gecko/20100101 Firefox/47.0"}
-    params = {'limit': 10}
+    endpoint = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {"User-Agent": "PersonalAgent/5.0"}
+    params = {"limit": 10}
     r = requests.get(endpoint, headers=headers, params=params,
                      allow_redirects=False)
     if r.status_code != 200:
