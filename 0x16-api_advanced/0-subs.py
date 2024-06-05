@@ -1,18 +1,33 @@
 #!/usr/bin/python3
-"""
-this doc for module
+"""queries the Reddit API and returns the number of
+subscribers (not active users, total subscribers)
 """
 import requests
 
-headers = {"User-Agent": "MyCustomUserAgent/1.0"}
-
 
 def number_of_subscribers(subreddit):
-    """method doc"""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    response = requests.get(url, allow_redirects=False, headers=headers)
+    """Queries the Reddit API for the number of subscribers
+    of a given subreddit.
+
+    Args:
+        subreddit (str): The name of the subreddit to query.
+
+    Returns:
+        int: The number of subscribers of the subreddit,
+        or 0 if invalid
+    """
+
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    user_agent = {"User-Agent": "kubuntu:konsole:v23.08.1 (by /u/0x83N3)"}
+
+    response = requests.get(url, headers=user_agent)
+
     if response.status_code == 200:
-        data = response.json()
-        return data["data"]["subscribers"]
+        try:
+            data = response.json()
+            return data["data"]["subscribers"]
+        except KeyError:
+            return 0
+
     else:
         return 0
