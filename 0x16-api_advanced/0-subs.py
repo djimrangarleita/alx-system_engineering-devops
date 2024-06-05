@@ -9,8 +9,8 @@ def number_of_subscribers(subreddit):
     """Return number of subcribers"""
     endpoint = f'https://www.reddit.com/r/{subreddit}/about.json'
     r = requests.get(endpoint, allow_redirects=False)
+    if r.status_code != 200:
+        return 0
     r = r.json()
     data = r.get('data')
-    if not data:
-        return 0
     return data.get('subscribers')
