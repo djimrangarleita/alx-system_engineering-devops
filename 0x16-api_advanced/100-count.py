@@ -23,7 +23,6 @@ def count_words(subreddit, word_list, next_elt=True, count={}):
         children = data.get("children")
         for child in children:
             title = child.get("data").get("title")
-            #hot_list.append(child.get("data").get("title"))
             for word in sanitized_list:
                 if word in title.lower():
                     count[word] = count.get(word, 0) + 1
@@ -35,8 +34,9 @@ def get_sanitized_words(words_list):
     words_list = [word.lower() for word in words_list]
     return words_list
 
+
 def sort_and_print(count):
     """Sort and print"""
-    sorted_data = dict(sorted(count.items(), key=lambda item: item[1], reverse=True))
-    for key, value in sorted_data.items():
+    data = dict(sorted(count.items(), key=lambda item: item[1], reverse=True))
+    for key, value in data.items():
         print("{}: {}".format(key, value))
