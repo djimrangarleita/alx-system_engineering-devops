@@ -1,33 +1,24 @@
-#!/usr/bin/python3
-"""queries the Reddit API and returns the number of
-subscribers (not active users, total subscribers)
-"""
-import requests
+import json
+import urllib.request
+import urllib.error
+"""A comment"""
 
 
 def number_of_subscribers(subreddit):
-    """Queries the Reddit API for the number of subscribers
-    of a given subreddit.
+    """Return number of subscribers"""
+    endpoint = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {"User-Agent": "PersonalAgent/4.0"}
 
-    Args:
-        subreddit (str): The name of the subreddit to query.
-
-    Returns:
-        int: The number of subscribers of the subreddit,
-        or 0 if invalid
-    """
-
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    user_agent = {"User-Agent": "kubuntu:konsole:v23.08.1 (by /u/0x83N3)"}
-
-    response = requests.get(url, headers=user_agent)
-
-    if response.status_code == 200:
-        try:
-            data = response.json()
-            return data["data"]["subscribers"]
-        except KeyError:
-            return 0
-
-    else:
-        return 0
+    try:
+        req = urllib.request.Request(endpoint, headers=headers)
+        with urllib.request.urlopen(req, allow_redirects=False) as response:
+            data = json.loads(response.read().decode('utf-8'))
+            return data['data']['subscribers']
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            print("Subreddit not found")
+        else:
+            print("Error:", e)
+    except Exception as e:
+        print("Error:", e)
+    return 0
