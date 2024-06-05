@@ -1,7 +1,8 @@
+#!/usr/bin/python3
+"""Module comment"""
 import json
 import urllib.request
 import urllib.error
-"""A comment"""
 
 
 def number_of_subscribers(subreddit):
