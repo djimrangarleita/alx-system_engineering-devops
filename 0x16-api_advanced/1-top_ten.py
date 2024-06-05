@@ -2,8 +2,6 @@
 """
 Query reddit api and print hot post titles of a subreddit
 """
-
-
 import requests
 
 
