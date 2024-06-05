@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Query reddit api and print hot post titles of a subreddit
+Query reddit api and print hot post titles of a subreddit
 """
 
 
@@ -18,6 +18,6 @@ def top_ten(subreddit):
         print(None)
         return
     r = r.json()
-    children = r.get('data').get('children')
+    children = r.get("data").get("children")
     for child in children:
-        print(child.get('data').get('title'))
+        print(child.get("data").get("title"))
