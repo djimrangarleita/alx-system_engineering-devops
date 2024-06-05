@@ -1,25 +1,16 @@
 #!/usr/bin/python3
-"""Module comment"""
-import json
-import urllib.request
-import urllib.error
+"""
+Query reddit api and return the number of subscribers of a subreddit
+"""
+import requests
 
 
 def number_of_subscribers(subreddit):
-    """Return number of subscribers"""
+    """Return number of subcribers"""
     endpoint = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "PersonalAgent/4.0"}
-
-    try:
-        req = urllib.request.Request(endpoint, headers=headers)
-        with urllib.request.urlopen(req, allow_redirects=False) as response:
-            data = json.loads(response.read().decode('utf-8'))
-            return data['data']['subscribers']
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            print("Subreddit not found")
-        else:
-            print("Error:", e)
-    except Exception as e:
-        print("Error:", e)
-    return 0
+    response = requests.get(endpoint, headers=headers, allow_redirects=False)
+    if response.status_code != 200:
+        return 0
+    data = response.json().get("data")
+    return data.get("subscribers")
