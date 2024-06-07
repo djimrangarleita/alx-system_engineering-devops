@@ -20,5 +20,5 @@ def top_ten(subreddit):
         children = data.get("data", {}).get("children", [])
         for child in children:
             print(child.get("data").get("title"))
-    except Exception:
-        pass
+    except (JSONDecodeError, Exception):
+        print(None)
