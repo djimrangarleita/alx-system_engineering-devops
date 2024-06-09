@@ -1,6 +1,7 @@
 # 0x19. Postmortem: Tech blog hack by Daesh
 
-![Defaced Blog](image: smartmockups_lx8429fj.jpg caption: Defaced blog during on-call engineer's confirmation)
+![Defaced Blog](smartmockups_lx8429fj.jpg)
+<small>_Defaced blog during on-call engineer's confirmation_</small>
 
 
 ## Issue Summary
@@ -69,6 +70,7 @@
 
 > :memo: **Conclusion:**
 
-![Security Engineer After fixing the issue](image: smartmockups_lx84b4vq.jpg caption: On-call Security Engineer After Fixing The Issue)
+![Security Engineer After fixing the issue](smartmockups_lx84b4vq.jpg)
+<small>_On-call Security Engineer After Fixing The Issue_</small>
 
 In the face of adversity, our team rallied to defeat the hackers and restore our fortress. With fortified defenses and renewed vigilance, we stand ready to repel any future attacks. Onward and upward! 🚀
