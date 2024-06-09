@@ -12,9 +12,9 @@
 - Impact:
 	- Website defaced with Daesh propaganda. 80% of users affected, experiencing a 301 redirection to the homepage. About 3 000 USD lost in ads revenue.
 
-## Root Cause:
+- Root Cause:
 
-- A vulnerability in an outdated WordPress plugin allowed hackers to gain access and deface the site.
+	- A vulnerability in an outdated WordPress plugin allowed hackers to gain access and deface the site.
 
 ## Timeline
 
@@ -55,7 +55,7 @@
 
 - Update security protocols and provide staff training on cybersecurity best practices.
 
-## Tasks to Address the Issue:
+### Tasks to Address the Issue:
 
 1. Patch Vulnerable Plugin:
 	- Review and update all plugins to the latest versions.
