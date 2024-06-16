@@ -1,0 +1,10 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        location ~ ^/number_odd_or_even/[0-9]+$ {
+                proxy_pass http://localhost:5001;
+        }
+        location / {
+                proxy_pass http://localhost:5000;
+        }
+}
