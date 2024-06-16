@@ -4,6 +4,9 @@ server {
         location ~ ^/airbnb-dynamic/number_odd_or_even/[0-9]+$ {
                 proxy_pass http://localhost:5001;
         }
+        location /api/ {
+                proxy_pass http://localhost:5002;
+        }
         location / {
                 proxy_pass http://localhost:5000;
         }
